@@ -1,5 +1,5 @@
 app: erange-admin-backend
-image: 539924878996.dkr.ecr.us-east-2.amazonaws.com/erange-admin-backend-stage:build_51-commit_47c4a04c5ed8a8d19d80f2826f0db96369efc9cd
+image: 539924878996.dkr.ecr.us-east-2.amazonaws.com/erange-admin-backend-stage:build_52-commit_47c4a04c5ed8a8d19d80f2826f0db96369efc9cd
 nodeport: 32001
 application_port: 8081
 resources:
