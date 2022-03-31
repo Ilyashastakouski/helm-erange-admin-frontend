@@ -1,0 +1,43 @@
+app: erange-users-mobile-app
+image: 539924878996.dkr.ecr.us-east-2.amazonaws.com/erange-users-mobile-app-stage:build_17-commit_555a1e51dae33d2112807c91f4857e62a23a99d9
+nodeport: 32002
+application_port: 80
+resources:
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+  requests:
+    memory: "256Mi"
+    cpu: "200m"
+readinessProbe:
+  httpGet:
+    scheme: HTTP
+    path: /index.html
+    port: 80
+  periodSeconds: 5
+  timeoutSeconds: 1
+  successThreshold: 1 
+  failureThreshold: 3
+livenessProbe:
+  httpGet:
+    scheme: HTTP
+    path: /index.html
+    port: 80
+  periodSeconds: 5
+  timeoutSeconds: 1
+  successThreshold: 1
+  failureThreshold: 3   
+startupProbe:
+  httpGet:
+    scheme: HTTP
+    path: /index.html
+    port: 80
+  failureThreshold: 30
+  periodSeconds: 10
+hpa:
+  minReplicas: 2
+  maxReplicas: 4
+  metrics:
+    resource:
+      name: cpu
+      targetAverageUtilization: 70
